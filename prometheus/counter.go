@@ -90,7 +90,8 @@ func (c *counter) Add(v float64) {
 	}
 	ival := uint64(v)
 	if float64(ival) == v {
-		atomic.AddUint64(&c.valInt, ival)
+		atomic.StoreUint64(&c.valInt, ival)
+		//atomic.AddUint64(&c.valInt, ival)
 		return
 	}
 
